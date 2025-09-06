@@ -1,4 +1,4 @@
-# JobLens – AI-Powered Job Apllication Coach
+# JobLens – AI-Powered Resume Rater
 
 ## Overview
 **JobLens** is an AI-driven web application designed to help job seekers optimize their resumes and increase their chances of getting shortlisted. The platform analyzes a resume against a target job description (JD), highlights missing skills, computes a relevance score, and provides actionable improvement suggestions. It also assists recruiters with faster pre-screening tools.
