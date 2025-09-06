@@ -1,73 +1,64 @@
-# Welcome to your Lovable project
+# JobLens – AI-Powered Job Apllication Coach
 
-## Project info
+## Overview
+**JobLens** is an AI-driven web application designed to help job seekers optimize their resumes and increase their chances of getting shortlisted. The platform analyzes a resume against a target job description (JD), highlights missing skills, computes a relevance score, and provides actionable improvement suggestions. It also assists recruiters with faster pre-screening tools.
 
-**URL**: https://lovable.dev/projects/2bf23fb6-2de4-4f77-b9d4-0a45733a78b4
+---
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+### Core Features
+- **Resume & JD Upload:** Upload PDF/DOCX resumes and paste or upload JDs.
+- **Keyword Extraction:** Extract skills, entities, and relevant terms from both resumes and JDs using NLP.
+- **Similarity Scoring:** Compute match score using TF-IDF and cosine similarity.
+- **Missing Skill Highlighting:** Identify skills or keywords present in JD but missing in the resume.
+- **Improvement Suggestions:** Provide actionable recommendations for optimizing resumes.
+- **Visual Dashboard:** Charts and highlights for keyword coverage and alignment.
 
-**Use Lovable**
+### Benefits
+- ⏳ **Time-Saving:** Get instant resume feedback.
+- 🎯 **Improved Shortlisting:** Tailor resumes to match recruiter expectations.
+- 📊 **Recruiter Utility:** Use as a pre-screening filter to rank candidates.
+- 🌐 **Accessible:** Free, lightweight, and user-friendly interface.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2bf23fb6-2de4-4f77-b9d4-0a45733a78b4) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## Tech Stack
 
-**Use your preferred IDE**
+- **Frontend:** React + Tailwind CSS, Recharts for visualizations.
+- **Backend:** FastAPI (Python) with CORS enabled for frontend-backend integration.
+- **AI/NLP:**
+  - spaCy → Named Entity Recognition (skills, roles, education)
+  - KeyBERT → Keyword extraction
+  - TF-IDF + Cosine Similarity → Relevance scoring
+- **File Handling:** pdfplumber (PDF) and python-docx (DOCX)
+- **Database (Optional):** SQLite/PostgreSQL for storing user history and analytics.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Architecture
 
-Follow these steps:
+**Workflow:**
+1. User uploads resume (PDF/DOCX) and JD.
+2. Backend extracts text from files.
+3. NLP pipeline identifies skills, keywords, and entities.
+4. Scoring engine calculates similarity score.
+5. Improvement suggestions highlight missing or weakly represented skills.
+6. Results returned as JSON for frontend visualization (charts, progress bars, highlights).
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Prerequisites
+- Python 3.10+
+- Node.js 18+
+- npm or yarn
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2bf23fb6-2de4-4f77-b9d4-0a45733a78b4) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Backend Setup
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate    # Linux/Mac
+venv\Scripts\activate       # Windows
+pip install -r requirements.txt
+uvicorn main:app --reload
